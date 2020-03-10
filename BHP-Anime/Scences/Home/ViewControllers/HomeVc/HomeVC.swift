@@ -25,8 +25,9 @@ class HomeVC: UIViewController {
     func configUI() {
         self.title = "Anime"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
-        self.navigationController?.navigationBar.tintColor = .black
-        let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font: AppFonts.Verdana(30)]
+        self.navigationController?.navigationBar.tintColor = UIColor.init("#0C0E41")
+        let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.init("#0C0E41"), NSAttributedString.Key.font: AppFonts.Verdana(30)]
+        
         
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
