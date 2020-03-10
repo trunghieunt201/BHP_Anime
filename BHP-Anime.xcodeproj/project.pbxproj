@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C829F4E77C248F817415EB00 /* Pods_BHP_Anime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983DEAC803C888C954EAACC3 /* Pods_BHP_Anime.framework */; };
+		EA1069942417E18100B4F1C8 /* UITextView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1069932417E18100B4F1C8 /* UITextView+Extentions.swift */; };
 		EA23241624157A3000A99243 /* StorageFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23241524157A3000A99243 /* StorageFavorite.swift */; };
 		EA23241F24157BC100A99243 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23241824157BC100A99243 /* FavoriteCell.swift */; };
 		EA23242024157BC100A99243 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA23241924157BC100A99243 /* FavoriteCell.xib */; };
@@ -100,6 +101,7 @@
 		92C98BA699FC7668BA61281C /* Pods-BHP-Anime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHP-Anime.debug.xcconfig"; path = "Target Support Files/Pods-BHP-Anime/Pods-BHP-Anime.debug.xcconfig"; sourceTree = "<group>"; };
 		983DEAC803C888C954EAACC3 /* Pods_BHP_Anime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BHP_Anime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03673ABC7F05A5566B0D0E2 /* Pods-BHP-Anime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BHP-Anime.release.xcconfig"; path = "Target Support Files/Pods-BHP-Anime/Pods-BHP-Anime.release.xcconfig"; sourceTree = "<group>"; };
+		EA1069932417E18100B4F1C8 /* UITextView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extentions.swift"; sourceTree = "<group>"; };
 		EA23241524157A3000A99243 /* StorageFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFavorite.swift; sourceTree = "<group>"; };
 		EA23241824157BC100A99243 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		EA23241924157BC100A99243 /* FavoriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				EA3578E4240FB1C7007BE7C4 /* NSObject+Extentions.swift */,
 				EA35794D24118D4E007BE7C4 /* UIView+Extention.swift */,
 				EA6824E52412509B00022DA0 /* UiTextField+Extention.swift */,
+				EA1069932417E18100B4F1C8 /* UITextView+Extentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				EA3578D5240FB114007BE7C4 /* TweeAttributedTextField.swift in Sources */,
 				EA23243F2416591D00A99243 /* SettingEnum.swift in Sources */,
 				EA23242D2415809600A99243 /* PlayerVideoVC.swift in Sources */,
+				EA1069942417E18100B4F1C8 /* UITextView+Extentions.swift in Sources */,
 				EA3578EC240FB1C7007BE7C4 /* UICollectionView+Extention.swift in Sources */,
 				EA357945241128AA007BE7C4 /* MenuCell.swift in Sources */,
 				EA3578CC240FB114007BE7C4 /* UIColorExtension.swift in Sources */,
