@@ -56,15 +56,9 @@ extension ScaledCell: UICollectionViewDataSource,  UICollectionViewDelegateFlowL
         cell.configCell(listItems[indexPath.row])
         //        cell.layer.shadowPath = shadowPath0.cgPath
         
+        cell.addShadow(offset: CGSize(width: 4, height: 4), color: .black, radius: 10, opacity: 0.4)
         cell.layer.cornerRadius = 16
         
-        cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-        
-        cell.layer.shadowOpacity = 1
-        
-        cell.layer.shadowRadius = 15
-        
-        cell.layer.shadowOffset = CGSize(width: 4, height: 4)
         return cell
     }
     

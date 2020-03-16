@@ -15,14 +15,12 @@
 //
 
 import UIKit
-import YoutubeKit
 import JGProgressHUD
 
 class Favorites: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var player: YTSwiftyPlayer!
     var listFavorite: [ObFavorite] = []
     
     
@@ -79,7 +77,7 @@ extension Favorites: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.className, for: indexPath) as! FavoriteCell
         cell.configCell(item: listFavorite[indexPath.row])
-        
+        cell.addShadow()
         cell.remove = {[weak self]()in
             StorageFavorite.sharedInstance.loadFavorites(success: { (listFavorite) in
                 
@@ -128,7 +126,7 @@ extension Favorites: UICollectionViewDelegate{
         }
         self.hidesBottomBarWhenPushed  = true
         playVideo.key = self.listFavorite[indexPath.row].key
-        topVC.navigationController?.pushViewController(playVideo, animated: true)
+        topVC.navigationController?.present(playVideo, animated: true, completion: nil)
         self.hidesBottomBarWhenPushed = false
  
     }
@@ -142,6 +140,3 @@ extension Favorites: UICollectionViewDelegateFlowLayout{
     }
 }
 
-extension Favorites: YTSwiftyPlayerDelegate{
-    
-}

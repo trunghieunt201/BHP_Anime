@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
     
     func configNavigationBarStyle() {
         self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "bg_navi")?.stretchableImage(withLeftCapWidth: 1, topCapHeight: 1), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "")?.stretchableImage(withLeftCapWidth: 1, topCapHeight: 1), for: .default)
         self.navigationController?.navigationBar.backIndicatorImage = UIImage.init()
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
         self.view.backgroundColor = .white

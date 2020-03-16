@@ -4,6 +4,9 @@ PODS:
   - Cosmos (21.0.0)
   - DynamicBlurView (4.0.0)
   - JGProgressHUD (2.1)
+  - Kingfisher (5.13.2):
+    - Kingfisher/Core (= 5.13.2)
+  - Kingfisher/Core (5.13.2)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -20,11 +23,12 @@ PODS:
     - Pageboy (~> 3.5.0)
   - Toast-Swift (5.0.1)
   - UPCarouselFlowLayout (1.1.2)
-  - YoutubeKit (0.4.0)
+  - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - Cosmos (~> 21.0)
   - JGProgressHUD
+  - Kingfisher (~> 5.0)
   - Moya (~> 13.0)
   - PopupDialog
   - PullToRefreshKit
@@ -32,7 +36,7 @@ DEPENDENCIES:
   - Tabman (~> 2.6)
   - Toast-Swift (~> 5.0.0)
   - UPCarouselFlowLayout
-  - YoutubeKit
+  - YouTubePlayer
 
 SPEC REPOS:
   trunk:
@@ -41,6 +45,7 @@ SPEC REPOS:
     - Cosmos
     - DynamicBlurView
     - JGProgressHUD
+    - Kingfisher
     - Moya
     - Pageboy
     - PopupDialog
@@ -50,7 +55,7 @@ SPEC REPOS:
     - Tabman
     - Toast-Swift
     - UPCarouselFlowLayout
-    - YoutubeKit
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -58,6 +63,7 @@ SPEC CHECKSUMS:
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
@@ -67,8 +73,8 @@ SPEC CHECKSUMS:
   Tabman: 63eae331ae7a9388ae389b1808f1939269fcdece
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
-  YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: fc37bbf62f186be41163dee5b53208901f3ba96c
+PODFILE CHECKSUM: 72dad7a24454f2d56d1a0e31093a254ac55e48a7
 
 COCOAPODS: 1.8.4

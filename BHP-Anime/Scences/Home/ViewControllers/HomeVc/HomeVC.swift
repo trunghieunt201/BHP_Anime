@@ -30,7 +30,7 @@ class HomeVC: UIViewController {
         
         
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navibase"), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         getlistItems(false, type: type)
@@ -49,8 +49,14 @@ class HomeVC: UIViewController {
             self.tableview.switchRefreshFooter(to: .normal)
         }
         
-        self.tableview.configRefreshHeader(container: self) {
-            self.getlistItems(false, type: self.type)
+//        self.tableview.configRefreshHeader(container: self) {
+//            self.getlistItems(false, type: self.type)
+//            self.tableview.switchRefreshHeader(to: .normal(.success, 0.5))
+//        }
+        let header = DefaultRefreshHeader.header()
+        header.setText("", mode: .pullToRefresh)
+        self.tableview.configRefreshHeader(with: header, container: self) {
+                        self.getlistItems(false, type: self.type)
             self.tableview.switchRefreshHeader(to: .normal(.success, 0.5))
         }
     }

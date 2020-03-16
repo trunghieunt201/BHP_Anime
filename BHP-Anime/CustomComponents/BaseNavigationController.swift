@@ -12,7 +12,11 @@ import UIKit
 class BaseNavigationController: UINavigationController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
     }
     
     override func viewDidLoad() {

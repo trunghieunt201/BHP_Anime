@@ -14,6 +14,7 @@ import JGProgressHUD
 
 class DetailAnimeVC: UIViewController {
     
+    @IBOutlet weak var viewPoster: UIView!
     
     @IBOutlet weak var navTitle: UILabel!
     
@@ -53,9 +54,9 @@ class DetailAnimeVC: UIViewController {
         
         viewTime.layer.cornerRadius = 12
         lblTime.text = "Released " + (item?.releaseDate ?? "")
-        
+        viewPoster.layer.cornerRadius = 16
         imgPoster.layer.cornerRadius = 16
-        //        imgPoster.addShadow(offset: CGSize(width: 0, height: 6), color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.15), radius: 16, opacity: 1)
+        viewPoster.addShadow(offset: CGSize(width: 2, height: 6), color: .black, radius: 12, opacity: 0.5)
         
         
         if let strUrl = item?.posterPath {

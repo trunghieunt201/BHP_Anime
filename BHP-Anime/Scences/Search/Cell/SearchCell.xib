@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,6 +22,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVP-DK-eYE">
+                        <rect key="frame" x="16" y="10" width="100" height="105"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="A8t-U7-A6Y">
                         <rect key="frame" x="16" y="10" width="100" height="105"/>
                         <constraints>
@@ -79,9 +84,13 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="aVP-DK-eYE" firstAttribute="centerX" secondItem="A8t-U7-A6Y" secondAttribute="centerX" id="240-RU-wnI"/>
                     <constraint firstItem="W8X-Lk-VIL" firstAttribute="leading" secondItem="nm0-GD-dMX" secondAttribute="trailing" constant="3" id="7qa-41-CjJ"/>
+                    <constraint firstItem="aVP-DK-eYE" firstAttribute="width" secondItem="A8t-U7-A6Y" secondAttribute="width" id="9Ax-bL-YzN"/>
+                    <constraint firstItem="aVP-DK-eYE" firstAttribute="centerY" secondItem="A8t-U7-A6Y" secondAttribute="centerY" id="AN8-I2-EhR"/>
                     <constraint firstAttribute="trailingMargin" secondItem="W8X-Lk-VIL" secondAttribute="trailing" constant="0.5" id="Eah-7P-13X"/>
                     <constraint firstItem="A8t-U7-A6Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="LrH-BR-mFe"/>
+                    <constraint firstItem="aVP-DK-eYE" firstAttribute="height" secondItem="A8t-U7-A6Y" secondAttribute="height" id="PyA-yQ-Oco"/>
                     <constraint firstItem="A8t-U7-A6Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SyG-oS-YdT"/>
                     <constraint firstItem="PLE-Bx-iMn" firstAttribute="leading" secondItem="A8t-U7-A6Y" secondAttribute="trailing" constant="8" id="TVC-PN-H9r"/>
                     <constraint firstAttribute="bottomMargin" secondItem="PLE-Bx-iMn" secondAttribute="bottom" constant="12" id="WiZ-A6-OS0"/>
@@ -101,6 +110,7 @@
                 <outlet property="lblRating" destination="V8r-kj-ZBS" id="q1y-Lg-FvU"/>
                 <outlet property="time" destination="W8X-Lk-VIL" id="9z6-XL-c0D"/>
                 <outlet property="titleAnime" destination="Udi-Hc-jwa" id="7D1-XO-Oac"/>
+                <outlet property="viewImg" destination="aVP-DK-eYE" id="CWn-We-WrX"/>
                 <outlet property="viewRating" destination="PLE-Bx-iMn" id="T9t-Th-Axg"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="55.915178571428569"/>
@@ -108,6 +118,6 @@
     </objects>
     <resources>
         <image name="ic_clock" width="12" height="12"/>
-        <image name="test" width="800" height="738"/>
+        <image name="test" width="816" height="1200"/>
     </resources>
 </document>

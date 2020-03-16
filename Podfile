@@ -11,10 +11,13 @@ target 'BHP-Anime' do
   pod 'PullToRefreshKit'
   pod 'Cosmos', '~> 21.0'
 
-  pod 'YoutubeKit'
+
+  pod 'YouTubePlayer'
   pod 'Toast-Swift', '~> 5.0.0'
   pod 'JGProgressHUD'
   pod 'PopupDialog'
+  
+  pod 'Kingfisher', '~> 5.0'
   # Pods for BHP-Anime
 
 end
