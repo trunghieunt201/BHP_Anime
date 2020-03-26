@@ -48,21 +48,6 @@ class Favorites: UIViewController {
             self.collectionView.reloadData()
             hud.dismiss()
         }
-        
-        
-        
-        
-        //        let lbNavTitle = UILabel (frame: CGRect(x: 0, y: 40, width: 320, height: 40))
-        //        lbNavTitle.center = CGPoint(x: 160, y: 285)
-        //        lbNavTitle.textAlignment = .left
-        //        lbNavTitle.text = "Favorite"
-        //        self.navigationItem.titleView = lbNavTitle
-        //
-        //        let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font: AppFonts.Verdana(50)]
-        //
-        //        self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -111,21 +96,13 @@ extension Favorites: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //         player = YTSwiftyPlayer(
-        //             frame: CGRect(x: 0, y: 0, width: 640, height: 480),
-        //             playerVars: [.videoID(self.listFavorite[indexPath.row].key ?? "")])
-        //         player.autoplay = true
-        //         view = player
-        //         player.delegate = self
-        //         player.loadPlayer()
-        
-        let playVideo = PlayerVideoVC.loadFromNib()
+        let detailAnimeVC = DetailAnimeVC.loadFromNib()
         guard let topVC = UIApplication.topViewController() else {
             return
         }
         self.hidesBottomBarWhenPushed  = true
-        playVideo.key = self.listFavorite[indexPath.row].key
-        topVC.navigationController?.pushViewController(playVideo, animated: true)
+        detailAnimeVC.id = listFavorite[indexPath.row].id
+        topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
         self.hidesBottomBarWhenPushed = false
  
     }

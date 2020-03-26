@@ -38,7 +38,6 @@ class DetailAnimeVC: UIViewController {
     
     @IBOutlet weak var viewRating: CosmosView!
     
-    
     @IBOutlet weak var lblAddList: UILabel!
     
     var id : String?

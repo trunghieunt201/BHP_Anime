@@ -36,14 +36,14 @@ class SearchVC: UIViewController {
         searchbar.layer.cornerRadius = 8
         searchbar.setLeftPaddingPoints(10)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-
-
+        tap.cancelsTouchesInView = false    
         view.addGestureRecognizer(tap)
         
         self.tableview.registerCell(SearchCell.className)
         self.tableview.dataSource = self
         self.tableview.separatorStyle = .none
         self.tableview.delegate = self
+        self.tableview.keyboardDismissMode = .onDrag
 
         
         self.getlistItems(false)
@@ -73,7 +73,6 @@ class SearchVC: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
     @objc func actionSearch(){
         self.textSearch = self.searchbar.text ?? ""
         if self.textSearch != ""{
@@ -162,6 +161,6 @@ extension SearchVC: UITableViewDelegate{
         self.hidesBottomBarWhenPushed  = true
         
         topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
-//        self.hidesBottomBarWhenPushed = false
+        self.hidesBottomBarWhenPushed = false
     }
 }
