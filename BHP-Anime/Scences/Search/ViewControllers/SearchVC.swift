@@ -24,21 +24,27 @@ class SearchVC: UIViewController {
         configUI()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     func configUI(){
         searchbar.addRightImage("ic_search1")
         searchbar.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
         searchbar.layer.cornerRadius = 8
         searchbar.setLeftPaddingPoints(10)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
+
+        view.addGestureRecognizer(tap)
         
         self.tableview.registerCell(SearchCell.className)
         self.tableview.dataSource = self
         self.tableview.separatorStyle = .none
         self.tableview.delegate = self
 
-        
-        self.navigationController?.navigationBar.isHidden = true
         
         self.getlistItems(false)
         
@@ -61,6 +67,11 @@ class SearchVC: UIViewController {
         }
         
         searchbar.addTarget(self, action: #selector(actionSearch), for: .editingChanged)
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     @objc func actionSearch(){
@@ -148,9 +159,9 @@ extension SearchVC: UITableViewDelegate{
         }
         
         //        topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
-        topVC.navigationController?.present(detailAnimeVC, animated: true, completion: {
-
-            return
-        })
+        self.hidesBottomBarWhenPushed  = true
+        
+        topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
+//        self.hidesBottomBarWhenPushed = false
     }
 }

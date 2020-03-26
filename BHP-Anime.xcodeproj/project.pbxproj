@@ -95,6 +95,10 @@
 		EA6824E82412516400022DA0 /* Search.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6824E72412516400022DA0 /* Search.xcassets */; };
 		EA6824EC241253B200022DA0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6824EA241253B200022DA0 /* SearchCell.swift */; };
 		EA6824ED241253B200022DA0 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6824EB241253B200022DA0 /* SearchCell.xib */; };
+		EA76066B242A6A60006211E5 /* Anime_Store.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = EA760667242A6A60006211E5 /* Anime_Store.mobileprovision */; };
+		EA76066C242A6A60006211E5 /* nhung.certSigningRequest in Resources */ = {isa = PBXBuildFile; fileRef = EA760668242A6A60006211E5 /* nhung.certSigningRequest */; };
+		EA76066D242A6A60006211E5 /* distribution.cer in Resources */ = {isa = PBXBuildFile; fileRef = EA760669242A6A60006211E5 /* distribution.cer */; };
+		EA76066E242A6A60006211E5 /* NhungCertificates.p12 in Resources */ = {isa = PBXBuildFile; fileRef = EA76066A242A6A60006211E5 /* NhungCertificates.p12 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +196,10 @@
 		EA6824E72412516400022DA0 /* Search.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Search.xcassets; sourceTree = "<group>"; };
 		EA6824EA241253B200022DA0 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		EA6824EB241253B200022DA0 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		EA760667242A6A60006211E5 /* Anime_Store.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anime_Store.mobileprovision; sourceTree = "<group>"; };
+		EA760668242A6A60006211E5 /* nhung.certSigningRequest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nhung.certSigningRequest; sourceTree = "<group>"; };
+		EA760669242A6A60006211E5 /* distribution.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = distribution.cer; sourceTree = "<group>"; };
+		EA76066A242A6A60006211E5 /* NhungCertificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = NhungCertificates.p12; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +335,7 @@
 		EA3578AD240FAEBB007BE7C4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				EA76066F242A6A6F006211E5 /* CertificatesKey */,
 				EA3578A7240FAD1D007BE7C4 /* Info.plist */,
 				EA3578A4240FAD1D007BE7C4 /* LaunchScreen.storyboard */,
 				EA3578A2240FAD1D007BE7C4 /* Assets.xcassets */,
@@ -673,6 +682,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EA76066F242A6A6F006211E5 /* CertificatesKey */ = {
+			isa = PBXGroup;
+			children = (
+				EA760667242A6A60006211E5 /* Anime_Store.mobileprovision */,
+				EA760669242A6A60006211E5 /* distribution.cer */,
+				EA760668242A6A60006211E5 /* nhung.certSigningRequest */,
+				EA76066A242A6A60006211E5 /* NhungCertificates.p12 */,
+			);
+			path = CertificatesKey;
+			sourceTree = "<group>";
+		};
 		FB0C20A3C5892FFAB4264B00 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,20 +778,24 @@
 				EA35790E240FBD3D007BE7C4 /* Tabbar.xcassets in Resources */,
 				EA3578FC240FB286007BE7C4 /* CoreSansGS55Medium.ttf in Resources */,
 				EA6824E82412516400022DA0 /* Search.xcassets in Resources */,
+				EA76066D242A6A60006211E5 /* distribution.cer in Resources */,
 				EA23242024157BC100A99243 /* FavoriteCell.xib in Resources */,
 				EA23243924164B7100A99243 /* SettingCell.xib in Resources */,
 				EA3578D0240FB114007BE7C4 /* iOS-Info.plist in Resources */,
 				EA35792A24100C6C007BE7C4 /* ScaledCell.xib in Resources */,
 				EA3578FE240FB286007BE7C4 /* CoreSansGS65Bold.ttf in Resources */,
 				EA3578BA240FB0C4007BE7C4 /* HomeVC.xib in Resources */,
+				EA76066B242A6A60006211E5 /* Anime_Store.mobileprovision in Resources */,
 				EA3578FF240FB286007BE7C4 /* Effra_Trial_Rg1.ttf in Resources */,
 				EA357946241128AA007BE7C4 /* MenuCell.xib in Resources */,
 				EA2324452416967700A99243 /* RattingPP.xib in Resources */,
 				EA3579412410BF52007BE7C4 /* SimpleCell.xib in Resources */,
 				EA35794C24115DF0007BE7C4 /* DetailAnimeVC.xib in Resources */,
+				EA76066C242A6A60006211E5 /* nhung.certSigningRequest in Resources */,
 				EA3578CE240FB114007BE7C4 /* macOS-Info.plist in Resources */,
 				EA3578A3240FAD1D007BE7C4 /* Assets.xcassets in Resources */,
 				EA23242924157CD000A99243 /* Favorites.xib in Resources */,
+				EA76066E242A6A60006211E5 /* NhungCertificates.p12 in Resources */,
 				EA357923240FFE95007BE7C4 /* Home.xcassets in Resources */,
 				EA23243C2416551100A99243 /* Setting.xcassets in Resources */,
 				EA35790C240FB565007BE7C4 /* TabbarVC.xib in Resources */,
@@ -1017,16 +1041,18 @@
 			baseConfigurationReference = 92C98BA699FC7668BA61281C /* Pods-BHP-Anime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DUBLSFJH5H;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 374Z27ML26;
 				INFOPLIST_FILE = "$(SRCROOT)/BHP-Anime/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vivutech.BHP-Anime";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prox.com.prox.animehd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Anime Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1037,16 +1063,18 @@
 			baseConfigurationReference = B03673ABC7F05A5566B0D0E2 /* Pods-BHP-Anime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DUBLSFJH5H;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 374Z27ML26;
 				INFOPLIST_FILE = "$(SRCROOT)/BHP-Anime/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vivutech.BHP-Anime";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prox.com.prox.animehd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Anime Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

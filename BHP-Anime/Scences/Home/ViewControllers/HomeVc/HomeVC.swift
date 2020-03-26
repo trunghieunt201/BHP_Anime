@@ -22,9 +22,16 @@ class HomeVC: UIViewController {
         configUI()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     func configUI() {
         self.title = "Anime"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
+
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
         self.navigationController?.navigationBar.tintColor = UIColor.init("#0C0E41")
         let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.init("#0C0E41"), NSAttributedString.Key.font: AppFonts.Verdana(30)]
         
@@ -166,13 +173,10 @@ extension HomeVC: UITableViewDelegate{
         guard let topVC = UIApplication.topViewController() else {
             return
         }
-        
-        topVC.navigationController?.present(detailAnimeVC, animated: true, completion: {
-
-            return
-
-        
-        })
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.navigationBar.isHidden = true
+        topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
 }

@@ -39,6 +39,7 @@ class DetailAnimeVC: UIViewController {
     @IBOutlet weak var viewRating: CosmosView!
     
     
+    @IBOutlet weak var lblAddList: UILabel!
     
     var id : String?
     var item: DetailItems?
@@ -49,16 +50,23 @@ class DetailAnimeVC: UIViewController {
         getDetailItems()
         // Do any additional setup after loading the view.
     }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        self.navigationController?.navigationBar.isHidden = true
+    //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     func configUI() {
         navTitle.text = item?.title
-        
         viewTime.layer.cornerRadius = 12
         lblTime.text = "Released " + (item?.releaseDate ?? "")
         viewPoster.layer.cornerRadius = 16
         imgPoster.layer.cornerRadius = 16
         viewPoster.addShadow(offset: CGSize(width: 2, height: 6), color: .black, radius: 12, opacity: 0.5)
         
-        
+        checkListFavorite()
         if let strUrl = item?.posterPath {
             let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
             DispatchQueue.global().async {
@@ -109,9 +117,31 @@ class DetailAnimeVC: UIViewController {
             print(error)
         }
     }
-    
+    func checkListFavorite() {
+        if self.item?.videos?.results?.count != 0{
+            StorageFavorite.sharedInstance.loadFavorites(success: { (listFavorite) in
+                let listFavorites = listFavorite
+                let results = listFavorites.filter { $0.id == String(self.item?.id ?? 0)}
+                if results.isEmpty == false{
+                    self.lblAddList.text = "Added To My List"
+                    self.viewAddList.backgroundColor = UIColor(red:0.36, green:0.55, blue:0.96, alpha:0.6)
+                    
+                }else{
+                    self.lblAddList.text = "Add To My List"
+                    self.viewAddList.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.3)
+                    
+                }
+            }) {
+                var listFavorite :[ObFavorite]  = []
+                let item = ObFavorite.init(id: String(self.item?.id ?? 0), key: self.item?.videos?.results?[0].key ?? "", posterPath: self.item?.posterPath ?? "")
+                listFavorite.append(item)
+                StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorite)
+            }
+        }
+    }
     @IBAction func actionBack(_ sender: Any) {
-        self.dismiss(animated: true) {}
+        self.hidesBottomBarWhenPushed = false
+        self.popViewController()
         
     }
     
@@ -132,14 +162,15 @@ class DetailAnimeVC: UIViewController {
                     
                     listFavorites.append(item)
                     StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorites)
-                    self.showToast(position: .bottom, message: "Success")
+                    //                    self.showToast(position: .bottom, message: "Success")
+                    self.lblAddList.text = "Added To My List"
+                    self.viewAddList.backgroundColor = UIColor(red:0.36, green:0.55, blue:0.96, alpha:0.6)
                 }
             }) {
                 var listFavorite :[ObFavorite]  = []
                 let item = ObFavorite.init(id: String(self.item?.id ?? 0), key: self.item?.videos?.results?[0].key ?? "", posterPath: self.item?.posterPath ?? "")
                 listFavorite.append(item)
                 StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorite)
-                self.showToast(position: .bottom, message: "Success")
             }
         }
         
@@ -164,10 +195,9 @@ class DetailAnimeVC: UIViewController {
             let playVideo = PlayerVideoVC.loadFromNib()
             
             playVideo.key = item?.videos?.results?[0].key
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(playVideo, animated: true)
             
-            self.present(playVideo, animated: true, completion: {
-                return
-            })
         }else{
             self.showToastAtBottom(message: "Video does not exist")
         }

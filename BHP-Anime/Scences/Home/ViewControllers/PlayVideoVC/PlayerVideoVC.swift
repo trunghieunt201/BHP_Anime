@@ -37,7 +37,7 @@ class PlayerVideoVC: UIViewController {
     }
     
     @IBAction func actiondismiss(_ sender: Any) {
-        self.dismiss(animated: true)
+        self.popViewController()
         
     }
     

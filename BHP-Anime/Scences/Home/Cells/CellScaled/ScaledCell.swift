@@ -72,8 +72,8 @@ extension ScaledCell: UICollectionViewDelegate{
         guard let topVC = UIApplication.topViewController() else {
             return
         }
-        topVC.navigationController?.present(detailAnimeVC, animated: true, completion: {
-            return
-        })
+        topVC.hidesBottomBarWhenPushed = true
+        topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
+        topVC.hidesBottomBarWhenPushed = false
     }
 }

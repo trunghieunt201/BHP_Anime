@@ -89,7 +89,6 @@ extension Favorites: UICollectionViewDataSource{
                     listFavorites.remove(at: indexPath.row)
                     StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorites)
                     self?.listFavorite = listFavorites
-                    self?.showToast(position: .bottom, message: "Success")
                     self?.collectionView.reloadData()
                 }))
                 
@@ -126,7 +125,7 @@ extension Favorites: UICollectionViewDelegate{
         }
         self.hidesBottomBarWhenPushed  = true
         playVideo.key = self.listFavorite[indexPath.row].key
-        topVC.navigationController?.present(playVideo, animated: true, completion: nil)
+        topVC.navigationController?.pushViewController(playVideo, animated: true)
         self.hidesBottomBarWhenPushed = false
  
     }

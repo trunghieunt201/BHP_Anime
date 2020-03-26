@@ -13,7 +13,7 @@ class SettingVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var itemCell : [SettingEnum] = [.rateApp, .feedBack, .shareThisApp, .upgrade, .about]
-    var idApp = "284708449"
+    var idApp = "1502872197"
     
 
     
@@ -31,7 +31,7 @@ class SettingVC: UIViewController {
         self.tableView.separatorStyle = .singleLine
         self.tableView.separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
-        tableView.separatorColor = UIColor.init("#212C31")
+//        tableView.separatorColor = UIColor.init("#212C31")
         self.navigationController?.navigationBar.isHidden = true
     }
 
