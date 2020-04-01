@@ -19,7 +19,6 @@
 		EA23242E2415809600A99243 /* PlayerVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA23242C2415809500A99243 /* PlayerVideoVC.xib */; };
 		EA232430241581D600A99243 /* DetailItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23242F241581D600A99243 /* DetailItems.swift */; };
 		EA232433241581E400A99243 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA232431241581E400A99243 /* Results.swift */; };
-		EA232434241581E400A99243 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA232432241581E400A99243 /* Videos.swift */; };
 		EA23243824164B7100A99243 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23243624164B7100A99243 /* SettingCell.swift */; };
 		EA23243924164B7100A99243 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA23243724164B7100A99243 /* SettingCell.xib */; };
 		EA23243C2416551100A99243 /* Setting.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA23243B2416551100A99243 /* Setting.xcassets */; };
@@ -87,7 +86,6 @@
 		EA35794E24118D4E007BE7C4 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35794D24118D4E007BE7C4 /* UIView+Extention.swift */; };
 		EA484D8F2413A6FB00DA7CB1 /* SearchAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA484D8E2413A6FB00DA7CB1 /* SearchAPIManager.swift */; };
 		EA484D912413A72400DA7CB1 /* SearchServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA484D902413A72400DA7CB1 /* SearchServices.swift */; };
-		EA484D932413D42700DA7CB1 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA484D922413D42700DA7CB1 /* Genres.swift */; };
 		EA51A8172416B8E700ACFFD7 /* DarkNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51A8162416B8E700ACFFD7 /* DarkNavigationController.swift */; };
 		EA51A81B2416BACA00ACFFD7 /* SendEmailPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51A8192416BACA00ACFFD7 /* SendEmailPP.swift */; };
 		EA51A81C2416BACA00ACFFD7 /* SendEmailPP.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA51A81A2416BACA00ACFFD7 /* SendEmailPP.xib */; };
@@ -99,6 +97,17 @@
 		EA76066C242A6A60006211E5 /* nhung.certSigningRequest in Resources */ = {isa = PBXBuildFile; fileRef = EA760668242A6A60006211E5 /* nhung.certSigningRequest */; };
 		EA76066D242A6A60006211E5 /* distribution.cer in Resources */ = {isa = PBXBuildFile; fileRef = EA760669242A6A60006211E5 /* distribution.cer */; };
 		EA76066E242A6A60006211E5 /* NhungCertificates.p12 in Resources */ = {isa = PBXBuildFile; fileRef = EA76066A242A6A60006211E5 /* NhungCertificates.p12 */; };
+		EA9AEE07242E3DE700414519 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AEE05242E3DE700414519 /* AboutVC.swift */; };
+		EA9AEE08242E3DE700414519 /* AboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9AEE06242E3DE700414519 /* AboutVC.xib */; };
+		EAF8006424349081003E5763 /* SoundTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8006224349081003E5763 /* SoundTrackVC.swift */; };
+		EAF8006524349081003E5763 /* SoundTrackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF8006324349081003E5763 /* SoundTrackVC.xib */; };
+		EAF80069243494C4003E5763 /* SoundTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF80067243494C4003E5763 /* SoundTrackCell.swift */; };
+		EAF8006A243494C4003E5763 /* SoundTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF80068243494C4003E5763 /* SoundTrackCell.xib */; };
+		EAF8006E2434A1CB003E5763 /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8006D2434A1CB003E5763 /* Soundtrack.swift */; };
+		EAF800722434C82E003E5763 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF800702434C82E003E5763 /* GalleryCell.swift */; };
+		EAF800732434C82E003E5763 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF800712434C82E003E5763 /* GalleryCell.xib */; };
+		EAF800832434D20C003E5763 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF800762434D20A003E5763 /* Genres.swift */; };
+		EAF800872434D20C003E5763 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8007A2434D20B003E5763 /* Videos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,7 +125,6 @@
 		EA23242C2415809500A99243 /* PlayerVideoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerVideoVC.xib; sourceTree = "<group>"; };
 		EA23242F241581D600A99243 /* DetailItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailItems.swift; sourceTree = "<group>"; };
 		EA232431241581E400A99243 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		EA232432241581E400A99243 /* Videos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		EA23243624164B7100A99243 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		EA23243724164B7100A99243 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		EA23243B2416551100A99243 /* Setting.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Setting.xcassets; sourceTree = "<group>"; };
@@ -188,7 +196,6 @@
 		EA35794D24118D4E007BE7C4 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 		EA484D8E2413A6FB00DA7CB1 /* SearchAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIManager.swift; sourceTree = "<group>"; };
 		EA484D902413A72400DA7CB1 /* SearchServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServices.swift; sourceTree = "<group>"; };
-		EA484D922413D42700DA7CB1 /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		EA51A8162416B8E700ACFFD7 /* DarkNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkNavigationController.swift; sourceTree = "<group>"; };
 		EA51A8192416BACA00ACFFD7 /* SendEmailPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailPP.swift; sourceTree = "<group>"; };
 		EA51A81A2416BACA00ACFFD7 /* SendEmailPP.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendEmailPP.xib; sourceTree = "<group>"; };
@@ -200,6 +207,17 @@
 		EA760668242A6A60006211E5 /* nhung.certSigningRequest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nhung.certSigningRequest; sourceTree = "<group>"; };
 		EA760669242A6A60006211E5 /* distribution.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = distribution.cer; sourceTree = "<group>"; };
 		EA76066A242A6A60006211E5 /* NhungCertificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = NhungCertificates.p12; sourceTree = "<group>"; };
+		EA9AEE05242E3DE700414519 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		EA9AEE06242E3DE700414519 /* AboutVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutVC.xib; sourceTree = "<group>"; };
+		EAF8006224349081003E5763 /* SoundTrackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrackVC.swift; sourceTree = "<group>"; };
+		EAF8006324349081003E5763 /* SoundTrackVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundTrackVC.xib; sourceTree = "<group>"; };
+		EAF80067243494C4003E5763 /* SoundTrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrackCell.swift; sourceTree = "<group>"; };
+		EAF80068243494C4003E5763 /* SoundTrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundTrackCell.xib; sourceTree = "<group>"; };
+		EAF8006D2434A1CB003E5763 /* Soundtrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soundtrack.swift; sourceTree = "<group>"; };
+		EAF800702434C82E003E5763 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		EAF800712434C82E003E5763 /* GalleryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
+		EAF800762434D20A003E5763 /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Genres.swift; path = ../../../../../../Desktop/pp/Genres.swift; sourceTree = "<group>"; };
+		EAF8007A2434D20B003E5763 /* Videos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Videos.swift; path = ../../../../../../Desktop/pp/Videos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +408,7 @@
 		EA3578B6240FB09F007BE7C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EAF8006124349043003E5763 /* Sound Track */,
 				EA23242A2415809500A99243 /* PlayVideoVC */,
 				EA35794824115AD3007BE7C4 /* DetailAnimeVC */,
 				EA35794724115AC4007BE7C4 /* HomeVc */,
@@ -513,9 +532,10 @@
 			children = (
 				EA23242F241581D600A99243 /* DetailItems.swift */,
 				EA232431241581E400A99243 /* Results.swift */,
-				EA232432241581E400A99243 /* Videos.swift */,
+				EAF8007A2434D20B003E5763 /* Videos.swift */,
+				EAF8006D2434A1CB003E5763 /* Soundtrack.swift */,
 				EA357901240FB4F8007BE7C4 /* Popular.swift */,
-				EA484D922413D42700DA7CB1 /* Genres.swift */,
+				EAF800762434D20A003E5763 /* Genres.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -584,8 +604,8 @@
 		EA35791C240FBEC8007BE7C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EA35791D240FBEEA007BE7C4 /* SettingVC.swift */,
-				EA35791E240FBEEA007BE7C4 /* SettingVC.xib */,
+				EA9AEE04242E3DC900414519 /* AboutVC */,
+				EA9AEE03242E3DAE00414519 /* SettingVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -593,6 +613,8 @@
 		EA35792424100C0F007BE7C4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EAF8006F2434C814003E5763 /* GalleryCell */,
+				EAF8006624349496003E5763 /* SoundTrackCell */,
 				EA35794224112816007BE7C4 /* MenuCell */,
 				EA35792B241018D9007BE7C4 /* ItemsCell */,
 				EA35792624100C3F007BE7C4 /* SimpleCell */,
@@ -693,6 +715,51 @@
 			path = CertificatesKey;
 			sourceTree = "<group>";
 		};
+		EA9AEE03242E3DAE00414519 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				EA35791D240FBEEA007BE7C4 /* SettingVC.swift */,
+				EA35791E240FBEEA007BE7C4 /* SettingVC.xib */,
+			);
+			path = SettingVC;
+			sourceTree = "<group>";
+		};
+		EA9AEE04242E3DC900414519 /* AboutVC */ = {
+			isa = PBXGroup;
+			children = (
+				EA9AEE05242E3DE700414519 /* AboutVC.swift */,
+				EA9AEE06242E3DE700414519 /* AboutVC.xib */,
+			);
+			path = AboutVC;
+			sourceTree = "<group>";
+		};
+		EAF8006124349043003E5763 /* Sound Track */ = {
+			isa = PBXGroup;
+			children = (
+				EAF8006224349081003E5763 /* SoundTrackVC.swift */,
+				EAF8006324349081003E5763 /* SoundTrackVC.xib */,
+			);
+			path = "Sound Track";
+			sourceTree = "<group>";
+		};
+		EAF8006624349496003E5763 /* SoundTrackCell */ = {
+			isa = PBXGroup;
+			children = (
+				EAF80067243494C4003E5763 /* SoundTrackCell.swift */,
+				EAF80068243494C4003E5763 /* SoundTrackCell.xib */,
+			);
+			path = SoundTrackCell;
+			sourceTree = "<group>";
+		};
+		EAF8006F2434C814003E5763 /* GalleryCell */ = {
+			isa = PBXGroup;
+			children = (
+				EAF800702434C82E003E5763 /* GalleryCell.swift */,
+				EAF800712434C82E003E5763 /* GalleryCell.xib */,
+			);
+			path = GalleryCell;
+			sourceTree = "<group>";
+		};
 		FB0C20A3C5892FFAB4264B00 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,10 +847,13 @@
 				EA6824E82412516400022DA0 /* Search.xcassets in Resources */,
 				EA76066D242A6A60006211E5 /* distribution.cer in Resources */,
 				EA23242024157BC100A99243 /* FavoriteCell.xib in Resources */,
+				EA9AEE08242E3DE700414519 /* AboutVC.xib in Resources */,
+				EAF800732434C82E003E5763 /* GalleryCell.xib in Resources */,
 				EA23243924164B7100A99243 /* SettingCell.xib in Resources */,
 				EA3578D0240FB114007BE7C4 /* iOS-Info.plist in Resources */,
 				EA35792A24100C6C007BE7C4 /* ScaledCell.xib in Resources */,
 				EA3578FE240FB286007BE7C4 /* CoreSansGS65Bold.ttf in Resources */,
+				EAF8006524349081003E5763 /* SoundTrackVC.xib in Resources */,
 				EA3578BA240FB0C4007BE7C4 /* HomeVC.xib in Resources */,
 				EA76066B242A6A60006211E5 /* Anime_Store.mobileprovision in Resources */,
 				EA3578FF240FB286007BE7C4 /* Effra_Trial_Rg1.ttf in Resources */,
@@ -793,6 +863,7 @@
 				EA35794C24115DF0007BE7C4 /* DetailAnimeVC.xib in Resources */,
 				EA76066C242A6A60006211E5 /* nhung.certSigningRequest in Resources */,
 				EA3578CE240FB114007BE7C4 /* macOS-Info.plist in Resources */,
+				EAF8006A243494C4003E5763 /* SoundTrackCell.xib in Resources */,
 				EA3578A3240FAD1D007BE7C4 /* Assets.xcassets in Resources */,
 				EA23242924157CD000A99243 /* Favorites.xib in Resources */,
 				EA76066E242A6A60006211E5 /* NhungCertificates.p12 in Resources */,
@@ -868,9 +939,12 @@
 				EA3578D3240FB114007BE7C4 /* TweeBorderedTextField.swift in Sources */,
 				EA3578D6240FB114007BE7C4 /* TweeActiveTextField.swift in Sources */,
 				EA35794B24115DF0007BE7C4 /* DetailAnimeVC.swift in Sources */,
+				EAF8006E2434A1CB003E5763 /* Soundtrack.swift in Sources */,
+				EAF800872434D20C003E5763 /* Videos.swift in Sources */,
 				EA3578B9240FB0C4007BE7C4 /* HomeVC.swift in Sources */,
 				EA35792E241018F9007BE7C4 /* ItemsCell.swift in Sources */,
 				EA357906240FB4F8007BE7C4 /* AnimeServices.swift in Sources */,
+				EAF8006424349081003E5763 /* SoundTrackVC.swift in Sources */,
 				EA3579402410BF52007BE7C4 /* SimpleCell.swift in Sources */,
 				EA2324442416967700A99243 /* RattingPP.swift in Sources */,
 				EA35790B240FB565007BE7C4 /* TabbarVC.swift in Sources */,
@@ -882,16 +956,19 @@
 				EA51A8172416B8E700ACFFD7 /* DarkNavigationController.swift in Sources */,
 				EA3578D1240FB114007BE7C4 /* StringExtension.swift in Sources */,
 				EA3578E6240FB1C7007BE7C4 /* TimeUltis.swift in Sources */,
+				EA9AEE07242E3DE700414519 /* AboutVC.swift in Sources */,
 				EA6824EC241253B200022DA0 /* SearchCell.swift in Sources */,
 				EA3578E9240FB1C7007BE7C4 /* Application+Extentions.swift in Sources */,
 				EA3578ED240FB1C7007BE7C4 /* NSObject+Extentions.swift in Sources */,
 				EA23241624157A3000A99243 /* StorageFavorite.swift in Sources */,
 				EA35789C240FAD19007BE7C4 /* SceneDelegate.swift in Sources */,
+				EAF800832434D20C003E5763 /* Genres.swift in Sources */,
 				EA357913240FBE68007BE7C4 /* SearchVC.swift in Sources */,
-				EA232434241581E400A99243 /* Videos.swift in Sources */,
 				EA3578E8240FB1C7007BE7C4 /* AppFonts.swift in Sources */,
 				EA484D8F2413A6FB00DA7CB1 /* SearchAPIManager.swift in Sources */,
+				EAF80069243494C4003E5763 /* SoundTrackCell.swift in Sources */,
 				EA3578D4240FB114007BE7C4 /* WeakTargetProxy.swift in Sources */,
+				EAF800722434C82E003E5763 /* GalleryCell.swift in Sources */,
 				EA3578E7240FB1C7007BE7C4 /* AppColors.swift in Sources */,
 				EA3578B2240FB053007BE7C4 /* BaseViewController.swift in Sources */,
 				EA3578D5240FB114007BE7C4 /* TweeAttributedTextField.swift in Sources */,
@@ -901,7 +978,6 @@
 				EA3578EC240FB1C7007BE7C4 /* UICollectionView+Extention.swift in Sources */,
 				EA357945241128AA007BE7C4 /* MenuCell.swift in Sources */,
 				EA3578CC240FB114007BE7C4 /* UIColorExtension.swift in Sources */,
-				EA484D932413D42700DA7CB1 /* Genres.swift in Sources */,
 				EA6824E62412509B00022DA0 /* UiTextField+Extention.swift in Sources */,
 				EA35794E24118D4E007BE7C4 /* UIView+Extention.swift in Sources */,
 				EA232433241581E400A99243 /* Results.swift in Sources */,
@@ -1043,7 +1119,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 374Z27ML26;
 				INFOPLIST_FILE = "$(SRCROOT)/BHP-Anime/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1066,7 +1142,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 374Z27ML26;
 				INFOPLIST_FILE = "$(SRCROOT)/BHP-Anime/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

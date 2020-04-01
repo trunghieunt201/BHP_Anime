@@ -32,7 +32,7 @@ class SearchCell: UITableViewCell {
 
         if let strUrl = item.backdropPath {
             let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
-self.img.kf.setImage(with: url)
+            self.img.kf.setImage(with: url)
         }else{
             self.img.image = UIImage(named: "test")
         }
@@ -41,7 +41,7 @@ self.img.kf.setImage(with: url)
         self.time.text = item.releaseDate
         viewRating.rating = Double((item.voteAverage ?? 10)/10.0)*5
         viewRating.settings.fillMode = .precise
-        lblRating.text = String(item.voteAverage ?? 0)
+        lblRating.text = String(item.voteCount ?? 0)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

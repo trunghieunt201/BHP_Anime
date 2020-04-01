@@ -67,9 +67,22 @@ extension SettingVC: UITableViewDelegate{
                 self.present(activityVC, animated: true, completion: nil)
             }
         case .upgrade:
-            break
+            
+            let alert = UIAlertController(title: "Features will be updated later", message: "", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         case .about:
-            break
+            let aboutVC = AboutVC.loadFromNib
+            guard let topVC = UIApplication.topViewController() else {
+                return
+            }
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.navigationBar.isHidden = true
+            topVC.navigationController?.pushViewController(aboutVC(), animated: true)
+            self.hidesBottomBarWhenPushed = false
+            
+            
         }
     }
     

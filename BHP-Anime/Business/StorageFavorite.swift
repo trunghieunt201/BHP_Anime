@@ -13,6 +13,7 @@ class StorageFavorite: NSObject {
 let userDefaults = UserDefaults.standard
     
     let STORAGE_FAVORITE = "favorite"
+    let STATUS_RATE_APP = "statusrateapp"
     
     override init() {
         super.init()
@@ -44,5 +45,13 @@ let userDefaults = UserDefaults.standard
         }
 
         success(favoritesArray)
+    }
+    
+    func saveStatusRateApp(status: Bool){
+        userDefaults.set(status, forKey: STATUS_RATE_APP)
+    }
+    func loadStatusRateApp() -> Bool {
+        let status = userDefaults.bool(forKey: STATUS_RATE_APP)
+        return status
     }
 }

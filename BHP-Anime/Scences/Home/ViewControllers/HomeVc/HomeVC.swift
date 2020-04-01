@@ -28,9 +28,14 @@ class HomeVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableview.reloadData()
+    }
+    
     func configUI() {
         self.title = "Anime"
-
+        let status = StorageFavorite.sharedInstance.loadStatusRateApp()
+        showAskRateApp(status: status)
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
         self.navigationController?.navigationBar.tintColor = UIColor.init("#0C0E41")
         let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.init("#0C0E41"), NSAttributedString.Key.font: AppFonts.Verdana(30)]
@@ -44,7 +49,7 @@ class HomeVC: UIViewController {
         
         
         self.tableview.registerCell(ScaledCell.className)
-        self.tableview.registerCell(SimpleCell.className)
+        self.tableview.registerCell(SearchCell.className)
         self.tableview.registerCell(MenuCell.className)
         self.tableview.dataSource = self
         self.tableview.separatorStyle = .none
@@ -66,6 +71,29 @@ class HomeVC: UIViewController {
                         self.getlistItems(false, type: self.type)
             self.tableview.switchRefreshHeader(to: .normal(.success, 0.5))
         }
+    }
+    
+    func showAskRateApp(status: Bool){
+        if status {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Would you like to rate us on the Appstore?", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (ok) in
+            self.jumpToAppStore(appId: "1502872197")
+            StorageFavorite.sharedInstance.saveStatusRateApp(status: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancle", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func jumpToAppStore(appId: String) {
+        let url = "itms-apps://itunes.apple.com/app/id\(appId)"
+        UIApplication.shared.openURL(NSURL(string: url)! as URL)
+        dismiss(animated: true, completion: nil)
     }
     
     func getlistItems(_ loadmore: Bool, type: Int) {
@@ -139,7 +167,7 @@ extension HomeVC: UITableViewDataSource{
             }
             return menuCell
         } else{
-            let simpleCell = tableView.dequeueReusableCell(withIdentifier: SimpleCell.className, for: indexPath) as! SimpleCell
+            let simpleCell = tableView.dequeueReusableCell(withIdentifier: SearchCell.className, for: indexPath) as! SearchCell
 
             simpleCell.selectionStyle = UITableViewCell.SelectionStyle.none
 
@@ -156,7 +184,7 @@ extension HomeVC: UITableViewDataSource{
         }else if indexPath.row == 1{
             return 40
         }else{
-            return 110
+            return 127
         }
         
     }

@@ -40,6 +40,12 @@ class DetailAnimeVC: UIViewController {
     
     @IBOutlet weak var lblAddList: UILabel!
     
+    @IBOutlet weak var imgAddList: UIImageView!
+    
+    @IBOutlet weak var collectionViewGallery: UICollectionView!
+    
+    @IBOutlet weak var viewGallery: UIView!
+    
     var id : String?
     var item: DetailItems?
     
@@ -49,9 +55,6 @@ class DetailAnimeVC: UIViewController {
         getDetailItems()
         // Do any additional setup after loading the view.
     }
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        self.navigationController?.navigationBar.isHidden = true
-    //    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -64,6 +67,13 @@ class DetailAnimeVC: UIViewController {
         viewPoster.layer.cornerRadius = 16
         imgPoster.layer.cornerRadius = 16
         viewPoster.addShadow(offset: CGSize(width: 2, height: 6), color: .black, radius: 12, opacity: 0.5)
+        viewGallery.backgroundColor = .groupTableViewBackground
+        viewGallery.layer.cornerRadius = 8
+        collectionViewGallery.backgroundColor = .groupTableViewBackground
+        viewGallery.addShadow(offset: CGSize(width: 0, height: 0), color: UIColor.black, radius:  4, opacity:  0.25)
+        
+        configCollectionView()
+        
         
         checkListFavorite()
         if let strUrl = item?.posterPath {
@@ -100,7 +110,12 @@ class DetailAnimeVC: UIViewController {
         
         outletPlayNow.layer.cornerRadius = 6
         outletPlayNow.addShadow(offset: CGSize(width: -1, height: 2), color: .black, radius: 6, opacity: 0.25)
-        
+    }
+    
+    func configCollectionView() {
+        self.collectionViewGallery.dataSource = self
+        self.collectionViewGallery.delegate = self
+        self.collectionViewGallery.registerCell(GalleryCell.className)
     }
     
     
@@ -124,17 +139,16 @@ class DetailAnimeVC: UIViewController {
                 if results.isEmpty == false{
                     self.lblAddList.text = "Added To My List"
                     self.viewAddList.backgroundColor = UIColor(red:0.36, green:0.55, blue:0.96, alpha:0.6)
-                    
+                    self.imgAddList.image = UIImage(named: "ic_tick-1")
                 }else{
                     self.lblAddList.text = "Add To My List"
                     self.viewAddList.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.3)
-                    
+                    self.imgAddList.image = UIImage(named: "ic_plus-1")
                 }
             }) {
-                var listFavorite :[ObFavorite]  = []
-                let item = ObFavorite.init(id: String(self.item?.id ?? 0), key: self.item?.videos?.results?[0].key ?? "", posterPath: self.item?.posterPath ?? "")
-                listFavorite.append(item)
-                StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorite)
+                self.lblAddList.text = "Add To My List"
+                self.viewAddList.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.3)
+                self.imgAddList.image = UIImage(named: "ic_plus-1")
             }
         }
     }
@@ -155,8 +169,12 @@ class DetailAnimeVC: UIViewController {
                 var listFavorites = listFavorite
                 let results = listFavorites.filter { $0.id == String(self.item?.id ?? 0)}
                 if results.isEmpty == false{
-                    
-                    self.showToastAtBottom(message: "The movie already exists in favorites")
+                    let row = listFavorite.firstIndex{$0.id == String(self.item?.id ?? 0)}
+                    listFavorites.remove(at: row ?? 10000)
+                    StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorites)
+                    self.lblAddList.text = "Add To My List"
+                    self.viewAddList.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.3)
+                    self.imgAddList.image = UIImage(named: "ic_plus-1")
                 }else{
                     
                     listFavorites.append(item)
@@ -164,6 +182,7 @@ class DetailAnimeVC: UIViewController {
                     //                    self.showToast(position: .bottom, message: "Success")
                     self.lblAddList.text = "Added To My List"
                     self.viewAddList.backgroundColor = UIColor(red:0.36, green:0.55, blue:0.96, alpha:0.6)
+                    self.imgAddList.image = UIImage(named: "ic_tick-1")
                 }
             }) {
                 var listFavorite :[ObFavorite]  = []
@@ -176,7 +195,12 @@ class DetailAnimeVC: UIViewController {
     }
     
     @IBAction func actionPlayNow(_ sender: Any) {
-        playVideo()
+
+        let soundTrackVC = SoundTrackVC.loadFromNib()
+        soundTrackVC.name = self.item?.title
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(soundTrackVC, animated: true)
+        
     }
     
     func playVideo() {
@@ -192,7 +216,7 @@ class DetailAnimeVC: UIViewController {
             //            player.loadPlayer()
             
             let playVideo = PlayerVideoVC.loadFromNib()
-            
+            playVideo.nameVideo = item?.title
             playVideo.key = item?.videos?.results?[0].key
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(playVideo, animated: true)
@@ -206,3 +230,25 @@ class DetailAnimeVC: UIViewController {
 }
 
 
+extension DetailAnimeVC: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionViewGallery.dequeueReusableCell(withReuseIdentifier: GalleryCell.className, for: indexPath) as! GalleryCell
+        let url = URL(string: "https://image.tmdb.org/t/p/w500//ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg")
+        cell.img.kf.setImage(with: url)
+        
+        return cell
+        
+    }
+    
+    
+}
+
+extension DetailAnimeVC: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 190, height: 106.88)
+    }
+}

@@ -39,6 +39,27 @@ struct AnimeAPIManager {
         }
     }
 
+    func getSoundtrack(name: String,success :  @escaping ([Soundtrack]) -> Void,failed :  @escaping (String) -> Void) {
+        provider.request(.getSoundtrack(name: name)) { (result) in
+            switch result{
+            case .success(let value):
+                do{
+                    var listSoundtrack : [Soundtrack] = []
+                    let json = try JSON.init(data: value.data)
+                    let results = json["results"].arrayValue
+                    for result in results{
+                        let soundtrack = Soundtrack.init(json: result)
+                        listSoundtrack.append(soundtrack)
+                    }
+                    success(listSoundtrack)
+                }catch(let error){
+                failed(error.localizedDescription)
+                }
+            case .failure(let error):
+                failed(error.localizedDescription)
+            }
+        }
+    }
     
     func getDetailItems(id: String,success :  @escaping (DetailItems) -> Void,failed :  @escaping (String) -> Void) {
         

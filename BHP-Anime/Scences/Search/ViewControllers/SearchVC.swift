@@ -35,6 +35,9 @@ class SearchVC: UIViewController {
 
         searchbar.layer.cornerRadius = 8
         searchbar.setLeftPaddingPoints(10)
+        searchbar.returnKeyType = UIReturnKeyType.done
+        searchbar.delegate = self
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false    
         view.addGestureRecognizer(tap)
@@ -162,5 +165,13 @@ extension SearchVC: UITableViewDelegate{
         
         topVC.navigationController?.pushViewController(detailAnimeVC, animated: true)
         self.hidesBottomBarWhenPushed = false
+    }
+}
+
+extension SearchVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
     }
 }

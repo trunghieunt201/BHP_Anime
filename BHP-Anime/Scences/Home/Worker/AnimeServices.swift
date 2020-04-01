@@ -16,6 +16,8 @@ enum AnimeServices {
     case getAnime(sort_by : String,with_genres: String, page: String)
 
     case getDetailAnime(id: String)
+    
+    case getSoundtrack(name: String)
 }
 
 extension AnimeServices: TargetType {
@@ -29,6 +31,8 @@ extension AnimeServices: TargetType {
         case .getDetailAnime(_):
             return URL.init(string: "https://api.themoviedb.org/3/movie/")!
             
+        case .getSoundtrack(_):
+            return URL.init(string: "https://itunes.apple.com/search")!
         }
         
     }
@@ -39,6 +43,8 @@ extension AnimeServices: TargetType {
             return ""
         case .getDetailAnime(let id):
             return id
+        case .getSoundtrack(_):
+            return ""
         }
 
     }
@@ -66,7 +72,13 @@ extension AnimeServices: TargetType {
             var param = Parameters()
             param["api_key"] = "647f1b2b2772a876099da5b545b40246"
             param["language"] = "en-US"
-            param["append_to_response"] = "videos,credits,recommendations,reviews"
+            param["append_to_response"] = "credits,images,videos"
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .getSoundtrack(let name):
+            var param = Parameters()
+            param["entity"] = "album"
+            param["media"] = "music"
+            param["term"] = name
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
     }

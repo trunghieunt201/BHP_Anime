@@ -17,6 +17,7 @@ target 'BHP-Anime' do
   pod 'JGProgressHUD'
   pod 'PopupDialog'
   
+  pod 'EmptyDataSet-Swift', '~> 5.0.0'
   pod 'Kingfisher', '~> 5.0'
   # Pods for BHP-Anime
 

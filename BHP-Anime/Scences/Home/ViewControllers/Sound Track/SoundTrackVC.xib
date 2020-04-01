@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SoundTrackVC" customModule="BHP_Anime" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="QKj-F3-Xok" id="sgm-01-yNH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7W-xs-SVj">
+                    <rect key="frame" x="7" y="25" width="41" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="DTq-lJ-xlZ"/>
+                        <constraint firstAttribute="width" constant="41" id="Lxo-u2-0v2"/>
+                    </constraints>
+                    <state key="normal" image="ic_back"/>
+                    <connections>
+                        <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="SaZ-mN-Wyu"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Track" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re9-Ey-shj">
+                    <rect key="frame" x="104" y="30" width="167.5" height="29.5"/>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                    <color key="textColor" red="0.047058823530000002" green="0.054901960780000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QKj-F3-Xok">
+                    <rect key="frame" x="0.0" y="73" width="375" height="594"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Re9-Ey-shj" firstAttribute="centerY" secondItem="V7W-xs-SVj" secondAttribute="centerY" id="50U-A0-h5d"/>
+                <constraint firstItem="QKj-F3-Xok" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9gA-VY-J0e"/>
+                <constraint firstItem="QKj-F3-Xok" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JI4-Zf-26a"/>
+                <constraint firstItem="Re9-Ey-shj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NNU-rT-J7p"/>
+                <constraint firstItem="QKj-F3-Xok" firstAttribute="top" secondItem="V7W-xs-SVj" secondAttribute="bottom" constant="8" id="Wtp-mx-tUy"/>
+                <constraint firstItem="V7W-xs-SVj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="7" id="a3a-mE-w9F"/>
+                <constraint firstItem="Re9-Ey-shj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="nxz-oS-IBF"/>
+                <constraint firstAttribute="bottom" secondItem="QKj-F3-Xok" secondAttribute="bottom" id="wlD-iC-Owe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.40000000000001" y="136.28185907046478"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_back" width="11" height="18"/>
+    </resources>
+</document>

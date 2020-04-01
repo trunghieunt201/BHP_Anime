@@ -13,17 +13,14 @@ class PlayerVideoVC: UIViewController {
     
 @IBOutlet var videoPlayer: YouTubePlayerView!
     
-    
-//    private var player: YTSwiftyPlayer!
+    @IBOutlet weak var titleName: UILabel!
+    var nameVideo: String?
     var key: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleName.text = nameVideo
         self.navigationController?.navigationBar.isHidden = true
-//        self.title = "Youtube"
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        playerVideo = YTSwiftyPlayer(
-//            frame: CGRect(x: 0, y: 0, width: 640, height: 480),
-//            playerVars: [.videoID((key ?? ""))])
 
         videoPlayer.loadVideoID(key ?? "")
         videoPlayer.play()
