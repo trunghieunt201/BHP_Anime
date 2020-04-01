@@ -46,12 +46,4 @@ let userDefaults = UserDefaults.standard
 
         success(favoritesArray)
     }
-    
-    func saveStatusRateApp(status: Bool){
-        userDefaults.set(status, forKey: STATUS_RATE_APP)
-    }
-    func loadStatusRateApp() -> Bool {
-        let status = userDefaults.bool(forKey: STATUS_RATE_APP)
-        return status
-    }
 }

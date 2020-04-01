@@ -20,13 +20,13 @@ class TabbarVC: UITabBarController {
     
     func setupTabbar() {
         let homeVC = HomeVC.loadFromNib()
-        homeVC.tabBarItem = createTabbarItem(title: "", imageName: "home-run")
+        homeVC.tabBarItem = createTabbarItem(title: "Home", imageName: "home-run")
         let searchVC = SearchVC.loadFromNib()
-        searchVC.tabBarItem = createTabbarItem(title: "", imageName: "search")
+        searchVC.tabBarItem = createTabbarItem(title: "Search", imageName: "search")
         let favoriteVC = Favorites.loadFromNib()
-        favoriteVC.tabBarItem = createTabbarItem(title: "", imageName: "Vector")
+        favoriteVC.tabBarItem = createTabbarItem(title: "Favorite", imageName: "Vector")
         let settingVC = SettingVC.loadFromNib()
-        settingVC.tabBarItem = createTabbarItem(title: "", imageName: "settings")
+        settingVC.tabBarItem = createTabbarItem(title: "Settings", imageName: "settings")
         
         
         let homeNav = BaseNavigationController.init(rootViewController: homeVC)

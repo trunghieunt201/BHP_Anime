@@ -18,6 +18,7 @@ class ItemsCell: UICollectionViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         img.layer.cornerRadius = 16
+        imgAdd.isHidden = true
     }
     func configCell(_ item: Popular){
         StorageFavorite.sharedInstance.loadFavorites(success: { (listFavorite) in

@@ -8,6 +8,7 @@
 
 import UIKit
 import PopupDialog
+import StoreKit
 class SettingVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +35,12 @@ class SettingVC: UIViewController {
 //        tableView.separatorColor = UIColor.init("#212C31")
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    func jumpToAppStore(appId: String) {
+        let url = "itms-apps://itunes.apple.com/app/id\(appId)"
+        UIApplication.shared.openURL(NSURL(string: url)! as URL)
+        dismiss(animated: true, completion: nil)
+    }
 
 
 }
@@ -46,8 +53,11 @@ extension SettingVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch itemCell[indexPath.row]{
         case .rateApp:
-            let popupVC = PopupDialog.init(viewController: RattingPP.loadFromNib(), tapGestureDismissal: false, panGestureDismissal: false)
-            self.present(popupVC, animated: true, completion: nil)
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                self.jumpToAppStore(appId: "1502872197")
+            }
         case .feedBack:
             let popupVC = PopupDialog.init(viewController: SendEmailPP.loadFromNib(), tapGestureDismissal: false, panGestureDismissal: false)
             self.present(popupVC, animated: true, completion: nil)

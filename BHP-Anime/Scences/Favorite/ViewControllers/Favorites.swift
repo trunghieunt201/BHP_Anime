@@ -33,6 +33,7 @@ class Favorites: UIViewController {
         configUI()
     }
     func configUI() {
+        self.title = "Favorites"
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.registerCell(FavoriteCell.className)

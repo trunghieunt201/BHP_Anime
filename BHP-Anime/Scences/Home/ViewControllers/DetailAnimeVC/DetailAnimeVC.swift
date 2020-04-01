@@ -133,7 +133,6 @@ class DetailAnimeVC: UIViewController {
         self.collectionViewGallery.delegate = self
         self.collectionViewGallery.registerCell(GalleryCell.className)
         
-        
         self.collectionViewCast.dataSource = self
         self.collectionViewCast.delegate = self
         self.collectionViewCast.registerCell(ProfileCell.className)
@@ -142,6 +141,17 @@ class DetailAnimeVC: UIViewController {
         self.collectionViewCrew.dataSource = self
         self.collectionViewCrew.delegate = self
         self.collectionViewCrew.registerCell(ProfileCell.className)
+        
+        
+        if self.item?.images?.backdrops?.count == 0{
+            self.viewGallery.isHidden = true
+        }
+        if self.item?.credits?.cast?.count == 0{
+             self.viewCast.isHidden = true
+        }
+        if self.item?.credits?.crew?.count == 0{
+             self.viewCrew.isHidden = true
+        }
     }
     
     

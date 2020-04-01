@@ -8,7 +8,7 @@
 
 import UIKit
 import PullToRefreshKit
-
+import StoreKit
 import JGProgressHUD
 
 class HomeVC: UIViewController {
@@ -34,8 +34,7 @@ class HomeVC: UIViewController {
     
     func configUI() {
         self.title = "Anime"
-        let status = StorageFavorite.sharedInstance.loadStatusRateApp()
-        showAskRateApp(status: status)
+        showAskRateApp()
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
         self.navigationController?.navigationBar.tintColor = UIColor.init("#0C0E41")
         let titleAttributes = [NSAttributedString.Key.foregroundColor:UIColor.init("#0C0E41"), NSAttributedString.Key.font: AppFonts.Verdana(30)]
@@ -73,28 +72,17 @@ class HomeVC: UIViewController {
         }
     }
     
-    func showAskRateApp(status: Bool){
-        if status {
-            return
+    func showAskRateApp(){
+        
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        } else {
+            
         }
         
-        let alert = UIAlertController(title: "Would you like to rate us on the Appstore?", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (ok) in
-            self.jumpToAppStore(appId: "1502872197")
-            StorageFavorite.sharedInstance.saveStatusRateApp(status: true)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancle", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
+       
     }
     
-    func jumpToAppStore(appId: String) {
-        let url = "itms-apps://itunes.apple.com/app/id\(appId)"
-        UIApplication.shared.openURL(NSURL(string: url)! as URL)
-        dismiss(animated: true, completion: nil)
-    }
     
     func getlistItems(_ loadmore: Bool, type: Int) {
         if loadmore{
