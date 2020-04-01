@@ -46,6 +46,14 @@ class DetailAnimeVC: UIViewController {
     
     @IBOutlet weak var viewGallery: UIView!
     
+    @IBOutlet weak var viewCast: UIView!
+    
+    @IBOutlet weak var viewCrew: UIView!
+    
+    @IBOutlet weak var collectionViewCast: UICollectionView!
+    
+    @IBOutlet weak var collectionViewCrew: UICollectionView!
+    
     var id : String?
     var item: DetailItems?
     
@@ -67,10 +75,18 @@ class DetailAnimeVC: UIViewController {
         viewPoster.layer.cornerRadius = 16
         imgPoster.layer.cornerRadius = 16
         viewPoster.addShadow(offset: CGSize(width: 2, height: 6), color: .black, radius: 12, opacity: 0.5)
-        viewGallery.backgroundColor = .groupTableViewBackground
-        viewGallery.layer.cornerRadius = 8
         collectionViewGallery.backgroundColor = .groupTableViewBackground
+        collectionViewCrew.backgroundColor = .groupTableViewBackground
+        collectionViewCast.backgroundColor = .groupTableViewBackground
+        viewGallery.backgroundColor = .groupTableViewBackground
+        viewCast.backgroundColor = .groupTableViewBackground
+        viewCrew.backgroundColor = .groupTableViewBackground
+        viewGallery.layer.cornerRadius = 8
+        viewCast.layer.cornerRadius = 8
+        viewCrew.layer.cornerRadius = 8
         viewGallery.addShadow(offset: CGSize(width: 0, height: 0), color: UIColor.black, radius:  4, opacity:  0.25)
+         viewCast.addShadow(offset: CGSize(width: 0, height: 0), color: UIColor.black, radius:  4, opacity:  0.25)
+         viewCrew.addShadow(offset: CGSize(width: 0, height: 0), color: UIColor.black, radius:  4, opacity:  0.25)
         
         configCollectionView()
         
@@ -116,6 +132,16 @@ class DetailAnimeVC: UIViewController {
         self.collectionViewGallery.dataSource = self
         self.collectionViewGallery.delegate = self
         self.collectionViewGallery.registerCell(GalleryCell.className)
+        
+        
+        self.collectionViewCast.dataSource = self
+        self.collectionViewCast.delegate = self
+        self.collectionViewCast.registerCell(ProfileCell.className)
+        
+        
+        self.collectionViewCrew.dataSource = self
+        self.collectionViewCrew.delegate = self
+        self.collectionViewCrew.registerCell(ProfileCell.className)
     }
     
     
@@ -126,6 +152,7 @@ class DetailAnimeVC: UIViewController {
         AnimeAPIManager.sharedInstance.getDetailItems(id: self.id ?? "0", success: { (detailItems) in
             self.item = detailItems
             hud.dismiss()
+            self.collectionViewGallery.reloadData()
             self.configUI()
         }) { (error) in
             print(error)
@@ -204,16 +231,7 @@ class DetailAnimeVC: UIViewController {
     }
     
     func playVideo() {
-        //        let url = "https://www.youtube.com/watch?v=" + (item?.videos?.results?[0].id ?? "")
         if item?.videos?.results?.count != 0{
-            //            player = YTSwiftyPlayer(
-            //                        frame: CGRect(x: 0, y: 0, width: 640, height: 480),
-            //                        playerVars: [.videoID((item?.videos?.results?[0].key ?? ""))])
-            //
-            //            player.autoplay = true
-            //            view = player
-            //            player.delegate = self
-            //            player.loadPlayer()
             
             let playVideo = PlayerVideoVC.loadFromNib()
             playVideo.nameVideo = item?.title
@@ -232,15 +250,46 @@ class DetailAnimeVC: UIViewController {
 
 extension DetailAnimeVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if collectionView == self.collectionViewGallery{
+            return self.item?.images?.backdrops?.count ?? 0
+        }else if collectionView == self.collectionViewCast{
+            return self.item?.credits?.cast?.count ?? 0
+        }else {
+            return self.item?.credits?.crew?.count ?? 0
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionViewGallery.dequeueReusableCell(withReuseIdentifier: GalleryCell.className, for: indexPath) as! GalleryCell
-        let url = URL(string: "https://image.tmdb.org/t/p/w500//ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg")
-        cell.img.kf.setImage(with: url)
+        if collectionView == self.collectionViewGallery{
+            let cell = collectionViewGallery.dequeueReusableCell(withReuseIdentifier: GalleryCell.className, for: indexPath) as! GalleryCell
+            let url = URL(string: "https://image.tmdb.org/t/p/w500/" + (self.item?.images?.backdrops?[indexPath.row].filePath ?? "/ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg"))
+            cell.img.kf.setImage(with: url)
+            
+            return cell
+        }else if collectionView == self.collectionViewCast{
+            let cell = collectionViewCast.dequeueReusableCell(withReuseIdentifier: ProfileCell.className, for: indexPath) as! ProfileCell
+            if let strUrl =  self.item?.credits?.cast?[indexPath.row].profilePath{
+                let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
+                cell.img.kf.setImage(with: url)
+            }else{
+                cell.img.image = UIImage(named: "account")
+            }
+            cell.name.text = self.item?.credits?.cast?[indexPath.row].name
+            return cell
+        }else{
+            let cell = collectionViewCrew.dequeueReusableCell(withReuseIdentifier: ProfileCell.className, for: indexPath) as! ProfileCell
+            if let strUrl =  self.item?.credits?.crew?[indexPath.row].profilePath{
+                let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
+                cell.img.kf.setImage(with: url)
+            }else{
+                cell.img.image = UIImage(named: "account")
+            }
+            
+            cell.name.text = self.item?.credits?.crew?[indexPath.row].name
+            return cell
+        }
         
-        return cell
         
     }
     
@@ -249,6 +298,13 @@ extension DetailAnimeVC: UICollectionViewDataSource{
 
 extension DetailAnimeVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 190, height: 106.88)
+        if collectionView == self.collectionViewGallery{
+            return CGSize(width: 190, height: 106.88)
+        }else if collectionView == self.collectionViewCast{
+            return CGSize(width: 120, height: 240)
+        }else {
+            return CGSize(width: 120, height: 240)
+        }
+        
     }
 }

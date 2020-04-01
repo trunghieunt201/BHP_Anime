@@ -71,7 +71,6 @@ extension AnimeServices: TargetType {
         case .getDetailAnime(_):
             var param = Parameters()
             param["api_key"] = "647f1b2b2772a876099da5b545b40246"
-            param["language"] = "en-US"
             param["append_to_response"] = "credits,images,videos"
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .getSoundtrack(let name):
