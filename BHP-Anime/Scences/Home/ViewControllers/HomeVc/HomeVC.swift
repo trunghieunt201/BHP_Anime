@@ -90,20 +90,14 @@ class HomeVC: UIViewController {
         }else{
             self.page = 1
         }
-        var sortBy: String = ""
         
-        if type == 1{
-            sortBy = "popularity.desc"
-        }else if type == 2{
-            sortBy = "vote_count.desc"
-        }else{
-            sortBy = "release_date.desc"
-        }
+        
+ 
 
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
-        AnimeAPIManager.sharedInstance.listPopular(sortBy: sortBy, withGenres: "16", page: String(self.page), success: { (listItems) in
+        AnimeAPIManager.sharedInstance.listPopular(sortBy: type, withGenres: "16", page: String(self.page), success: { (listItems) in
             
 
             if loadmore{

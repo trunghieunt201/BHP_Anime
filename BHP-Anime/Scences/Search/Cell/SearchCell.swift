@@ -30,15 +30,15 @@ class SearchCell: UITableViewCell {
     }
     func configCell(_ item : Popular){
 
-        if let strUrl = item.backdropPath {
+        if let strUrl = item.posterPath {
             let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
             self.img.kf.setImage(with: url)
         }else{
             self.img.image = UIImage(named: "test")
         }
 
-        self.titleAnime.text = item.title
-        self.time.text = item.releaseDate
+        self.titleAnime.text = item.name
+        self.time.text = item.firstAirDate
         viewRating.rating = Double((item.voteAverage ?? 10)/10.0)*5
         viewRating.settings.fillMode = .precise
         lblRating.text = String(item.voteCount ?? 0)

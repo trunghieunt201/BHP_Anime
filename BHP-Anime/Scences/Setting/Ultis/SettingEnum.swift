@@ -18,7 +18,7 @@ enum SettingEnum {
     var title :String{
         switch self {
         case .rateApp:
-            return "Top Rated"
+            return "Rate app"
         case .feedBack:
             return "Feedback"
         case .shareThisApp:

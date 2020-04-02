@@ -1,7 +1,7 @@
 //
 //  ProductionCompanies.swift
 //
-//  Created by Nguyen Trung Hieu on 4/1/20
+//  Created by Nguyen Trung Hieu on 4/2/20
 //  Copyright (c) . All rights reserved.
 //
 
@@ -15,14 +15,12 @@ public final class ProductionCompanies: NSCoding {
     static let originCountry = "origin_country"
     static let name = "name"
     static let id = "id"
-    static let logoPath = "logo_path"
   }
 
   // MARK: Properties
   public var originCountry: String?
   public var name: String?
   public var id: Int?
-  public var logoPath: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -40,7 +38,6 @@ public final class ProductionCompanies: NSCoding {
     originCountry = json[SerializationKeys.originCountry].string
     name = json[SerializationKeys.name].string
     id = json[SerializationKeys.id].int
-    logoPath = json[SerializationKeys.logoPath].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -51,7 +48,6 @@ public final class ProductionCompanies: NSCoding {
     if let value = originCountry { dictionary[SerializationKeys.originCountry] = value }
     if let value = name { dictionary[SerializationKeys.name] = value }
     if let value = id { dictionary[SerializationKeys.id] = value }
-    if let value = logoPath { dictionary[SerializationKeys.logoPath] = value }
     return dictionary
   }
 
@@ -60,14 +56,12 @@ public final class ProductionCompanies: NSCoding {
     self.originCountry = aDecoder.decodeObject(forKey: SerializationKeys.originCountry) as? String
     self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
     self.id = aDecoder.decodeObject(forKey: SerializationKeys.id) as? Int
-    self.logoPath = aDecoder.decodeObject(forKey: SerializationKeys.logoPath) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
     aCoder.encode(originCountry, forKey: SerializationKeys.originCountry)
     aCoder.encode(name, forKey: SerializationKeys.name)
     aCoder.encode(id, forKey: SerializationKeys.id)
-    aCoder.encode(logoPath, forKey: SerializationKeys.logoPath)
   }
 
 }

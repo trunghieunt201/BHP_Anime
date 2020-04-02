@@ -122,7 +122,7 @@ class SearchVC: UIViewController {
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
 
-        AnimeAPIManager.sharedInstance.listPopular(sortBy: "popularity.desc", withGenres: "16", page: String(self.page), success: { (listItems) in
+        AnimeAPIManager.sharedInstance.listPopular(sortBy: 1, withGenres: "16", page: String(self.page), success: { (listItems) in
             if loadmore{
                 self.listItem.append(contentsOf: listItems)
             }else{

@@ -15,7 +15,7 @@ struct AnimeAPIManager {
     static let sharedInstance = AnimeAPIManager()
     let provider = MoyaProvider<AnimeServices>()
     
-    func listPopular(sortBy : String,withGenres: String, page: String,success :  @escaping ([Popular]) -> Void,failed :  @escaping (String) -> Void) {
+    func listPopular(sortBy : Int,withGenres: String, page: String,success :  @escaping ([Popular]) -> Void,failed :  @escaping (String) -> Void) {
         var listPopular : [Popular] = []
         
         provider.request(.getAnime(sort_by: sortBy, with_genres: withGenres, page: page)) { (result) in

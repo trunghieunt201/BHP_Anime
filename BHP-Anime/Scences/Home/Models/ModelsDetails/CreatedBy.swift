@@ -1,5 +1,5 @@
 //
-//  Cast.swift
+//  CreatedBy.swift
 //
 //  Created by Nguyen Trung Hieu on 4/2/20
 //  Copyright (c) . All rights reserved.
@@ -8,27 +8,23 @@
 import Foundation
 import SwiftyJSON
 
-public final class Cast: NSCoding {
+public final class CreatedBy: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let name = "name"
-    static let profilePath = "profile_path"
-    static let character = "character"
-    static let id = "id"
     static let gender = "gender"
+    static let name = "name"
     static let creditId = "credit_id"
-    static let order = "order"
+    static let id = "id"
+    static let profilePath = "profile_path"
   }
 
   // MARK: Properties
-  public var name: String?
-  public var profilePath: String?
-  public var character: String?
-  public var id: Int?
   public var gender: Int?
+  public var name: String?
   public var creditId: String?
-  public var order: Int?
+  public var profilePath: String?
+  public var id: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -43,13 +39,11 @@ public final class Cast: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    name = json[SerializationKeys.name].string
-    profilePath = json[SerializationKeys.profilePath].string
-    character = json[SerializationKeys.character].string
-    id = json[SerializationKeys.id].int
     gender = json[SerializationKeys.gender].int
+    name = json[SerializationKeys.name].string
     creditId = json[SerializationKeys.creditId].string
-    order = json[SerializationKeys.order].int
+    creditId = json[SerializationKeys.profilePath].string
+    id = json[SerializationKeys.id].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -57,35 +51,29 @@ public final class Cast: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = name { dictionary[SerializationKeys.name] = value }
-    if let value = profilePath { dictionary[SerializationKeys.profilePath] = value }
-    if let value = character { dictionary[SerializationKeys.character] = value }
-    if let value = id { dictionary[SerializationKeys.id] = value }
     if let value = gender { dictionary[SerializationKeys.gender] = value }
+    if let value = name { dictionary[SerializationKeys.name] = value }
     if let value = creditId { dictionary[SerializationKeys.creditId] = value }
-    if let value = order { dictionary[SerializationKeys.order] = value }
+    if let value = profilePath { dictionary[SerializationKeys.profilePath] = value }
+    if let value = id { dictionary[SerializationKeys.id] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
-    self.profilePath = aDecoder.decodeObject(forKey: SerializationKeys.profilePath) as? String
-    self.character = aDecoder.decodeObject(forKey: SerializationKeys.character) as? String
-    self.id = aDecoder.decodeObject(forKey: SerializationKeys.id) as? Int
     self.gender = aDecoder.decodeObject(forKey: SerializationKeys.gender) as? Int
+    self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
     self.creditId = aDecoder.decodeObject(forKey: SerializationKeys.creditId) as? String
-    self.order = aDecoder.decodeObject(forKey: SerializationKeys.order) as? Int
+    self.profilePath = aDecoder.decodeObject(forKey: SerializationKeys.profilePath) as? String
+    self.id = aDecoder.decodeObject(forKey: SerializationKeys.id) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(name, forKey: SerializationKeys.name)
-    aCoder.encode(profilePath, forKey: SerializationKeys.profilePath)
-    aCoder.encode(character, forKey: SerializationKeys.character)
-    aCoder.encode(id, forKey: SerializationKeys.id)
     aCoder.encode(gender, forKey: SerializationKeys.gender)
+    aCoder.encode(name, forKey: SerializationKeys.name)
     aCoder.encode(creditId, forKey: SerializationKeys.creditId)
-    aCoder.encode(order, forKey: SerializationKeys.order)
+    aCoder.encode(profilePath, forKey: SerializationKeys.profilePath)
+    aCoder.encode(id, forKey: SerializationKeys.id)
   }
 
 }

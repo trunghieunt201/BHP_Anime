@@ -13,7 +13,7 @@ import Moya
 
 
 enum AnimeServices {
-    case getAnime(sort_by : String,with_genres: String, page: String)
+    case getAnime(sort_by : Int,with_genres: String, page: String)
 
     case getDetailAnime(id: String)
     
@@ -27,9 +27,9 @@ extension AnimeServices: TargetType {
         switch self {
             
         case .getAnime(_):
-            return URL.init(string: "https://api.themoviedb.org/3/discover/movie")!
+            return URL.init(string: "https://api.themoviedb.org/3/")!
         case .getDetailAnime(_):
-            return URL.init(string: "https://api.themoviedb.org/3/movie/")!
+            return URL.init(string: "https://api.themoviedb.org/3/tv/")!
             
         case .getSoundtrack(_):
             return URL.init(string: "https://itunes.apple.com/search")!
@@ -39,12 +39,19 @@ extension AnimeServices: TargetType {
     
     var path: String {
         switch self {
-        case .getAnime(_):
-            return ""
+        case .getAnime(let sort_by, let _, let _):
+            if sort_by == 1{
+                return "discover/tv"
+            }else if sort_by == 2{
+                return "tv/top_rated"
+            }else{
+                return "tv/on_the_air"
+            }
         case .getDetailAnime(let id):
             return id
         case .getSoundtrack(_):
             return ""
+            
         }
 
     }
@@ -59,13 +66,13 @@ extension AnimeServices: TargetType {
     
     var task: Task {
         switch self {
-        case .getAnime(let sort_by,let with_genres, let page):
+        case .getAnime(let page):
             var param = Parameters()
 
             param["api_key"] = "647f1b2b2772a876099da5b545b40246"
-            param["language"] = "en-US"
-            param["sort_by"] = sort_by
-            param["with_genres"] = with_genres
+            param["with_original_language"] = "ja"
+//            param["sort_by"] = sort_by
+            param["with_genres"] = 16
             param["page"] = page
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .getDetailAnime(_):

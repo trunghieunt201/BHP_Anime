@@ -1,24 +1,24 @@
 //
-//  ProductionCountries.swift
+//  Logo.swift
 //
-//  Created by Nguyen Trung Hieu on 4/1/20
+//  Created by Nguyen Trung Hieu on 4/2/20
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class ProductionCountries: NSCoding {
+public final class Logo: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let name = "name"
-    static let iso31661 = "iso_3166_1"
+    static let aspectRatio = "aspect_ratio"
+    static let path = "path"
   }
 
   // MARK: Properties
-  public var name: String?
-  public var iso31661: String?
+  public var aspectRatio: Float?
+  public var path: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +33,8 @@ public final class ProductionCountries: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    name = json[SerializationKeys.name].string
-    iso31661 = json[SerializationKeys.iso31661].string
+    aspectRatio = json[SerializationKeys.aspectRatio].float
+    path = json[SerializationKeys.path].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +42,20 @@ public final class ProductionCountries: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = name { dictionary[SerializationKeys.name] = value }
-    if let value = iso31661 { dictionary[SerializationKeys.iso31661] = value }
+    if let value = aspectRatio { dictionary[SerializationKeys.aspectRatio] = value }
+    if let value = path { dictionary[SerializationKeys.path] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
-    self.iso31661 = aDecoder.decodeObject(forKey: SerializationKeys.iso31661) as? String
+    self.aspectRatio = aDecoder.decodeObject(forKey: SerializationKeys.aspectRatio) as? Float
+    self.path = aDecoder.decodeObject(forKey: SerializationKeys.path) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(name, forKey: SerializationKeys.name)
-    aCoder.encode(iso31661, forKey: SerializationKeys.iso31661)
+    aCoder.encode(aspectRatio, forKey: SerializationKeys.aspectRatio)
+    aCoder.encode(path, forKey: SerializationKeys.path)
   }
 
 }

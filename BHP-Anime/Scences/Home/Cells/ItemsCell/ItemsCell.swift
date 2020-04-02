@@ -33,7 +33,7 @@ class ItemsCell: UICollectionViewCell{
             self.imgAdd.image = UIImage(named: "ic_plus")
         }
         
-        if let strUrl = item.backdropPath {
+        if let strUrl = item.posterPath {
             let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
             self.img.kf.setImage(with: url)
         }else{

@@ -69,9 +69,9 @@ class DetailAnimeVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     func configUI() {
-        navTitle.text = item?.title
+        navTitle.text = item?.name
         viewTime.layer.cornerRadius = 12
-        lblTime.text = "Released " + (item?.releaseDate ?? "")
+        lblTime.text = "First Air Date " + (item?.firstAirDate ?? "")
         viewPoster.layer.cornerRadius = 16
         imgPoster.layer.cornerRadius = 16
         viewPoster.addShadow(offset: CGSize(width: 2, height: 6), color: .black, radius: 12, opacity: 0.5)
@@ -141,12 +141,14 @@ class DetailAnimeVC: UIViewController {
         self.collectionViewCrew.dataSource = self
         self.collectionViewCrew.delegate = self
         self.collectionViewCrew.registerCell(ProfileCell.className)
+        // ẩn Crew
+        self.viewCrew.isHidden = true
         
-        
+        /// tạm thời thay tác giả cho Cast
         if self.item?.images?.backdrops?.count == 0{
             self.viewGallery.isHidden = true
         }
-        if self.item?.credits?.cast?.count == 0{
+        if self.item?.createdBy?.count == 0{
              self.viewCast.isHidden = true
         }
         if self.item?.credits?.crew?.count == 0{
@@ -234,7 +236,7 @@ class DetailAnimeVC: UIViewController {
     @IBAction func actionPlayNow(_ sender: Any) {
 
         let soundTrackVC = SoundTrackVC.loadFromNib()
-        soundTrackVC.name = self.item?.title
+        soundTrackVC.name = self.item?.name
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(soundTrackVC, animated: true)
         
@@ -244,7 +246,7 @@ class DetailAnimeVC: UIViewController {
         if item?.videos?.results?.count != 0{
             
             let playVideo = PlayerVideoVC.loadFromNib()
-            playVideo.nameVideo = item?.title
+            playVideo.nameVideo = item?.name
             playVideo.key = item?.videos?.results?[0].key
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(playVideo, animated: true)
@@ -263,7 +265,8 @@ extension DetailAnimeVC: UICollectionViewDataSource{
         if collectionView == self.collectionViewGallery{
             return self.item?.images?.backdrops?.count ?? 0
         }else if collectionView == self.collectionViewCast{
-            return self.item?.credits?.cast?.count ?? 0
+            /// tạm thời thay tác giả cho Cast
+            return self.item?.createdBy?.count ?? 0
         }else {
             return self.item?.credits?.crew?.count ?? 0
         }
@@ -278,8 +281,9 @@ extension DetailAnimeVC: UICollectionViewDataSource{
             
             return cell
         }else if collectionView == self.collectionViewCast{
+            /// tạm thời thay tác giả cho Cast
             let cell = collectionViewCast.dequeueReusableCell(withReuseIdentifier: ProfileCell.className, for: indexPath) as! ProfileCell
-            if let strUrl =  self.item?.credits?.cast?[indexPath.row].profilePath{
+            if let strUrl =  self.item?.createdBy?[indexPath.row].profilePath{
                 let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
                 cell.img.kf.setImage(with: url)
             }else{

@@ -1,7 +1,7 @@
 //
 //  Posters.swift
 //
-//  Created by Nguyen Trung Hieu on 4/1/20
+//  Created by Nguyen Trung Hieu on 4/2/20
 //  Copyright (c) . All rights reserved.
 //
 
@@ -16,7 +16,6 @@ public final class Posters: NSCoding {
     static let voteAverage = "vote_average"
     static let aspectRatio = "aspect_ratio"
     static let width = "width"
-    static let iso6391 = "iso_639_1"
     static let voteCount = "vote_count"
     static let filePath = "file_path"
   }
@@ -26,7 +25,6 @@ public final class Posters: NSCoding {
   public var voteAverage: Int?
   public var aspectRatio: Float?
   public var width: Int?
-  public var iso6391: String?
   public var voteCount: Int?
   public var filePath: String?
 
@@ -47,7 +45,6 @@ public final class Posters: NSCoding {
     voteAverage = json[SerializationKeys.voteAverage].int
     aspectRatio = json[SerializationKeys.aspectRatio].float
     width = json[SerializationKeys.width].int
-    iso6391 = json[SerializationKeys.iso6391].string
     voteCount = json[SerializationKeys.voteCount].int
     filePath = json[SerializationKeys.filePath].string
   }
@@ -61,7 +58,6 @@ public final class Posters: NSCoding {
     if let value = voteAverage { dictionary[SerializationKeys.voteAverage] = value }
     if let value = aspectRatio { dictionary[SerializationKeys.aspectRatio] = value }
     if let value = width { dictionary[SerializationKeys.width] = value }
-    if let value = iso6391 { dictionary[SerializationKeys.iso6391] = value }
     if let value = voteCount { dictionary[SerializationKeys.voteCount] = value }
     if let value = filePath { dictionary[SerializationKeys.filePath] = value }
     return dictionary
@@ -73,7 +69,6 @@ public final class Posters: NSCoding {
     self.voteAverage = aDecoder.decodeObject(forKey: SerializationKeys.voteAverage) as? Int
     self.aspectRatio = aDecoder.decodeObject(forKey: SerializationKeys.aspectRatio) as? Float
     self.width = aDecoder.decodeObject(forKey: SerializationKeys.width) as? Int
-    self.iso6391 = aDecoder.decodeObject(forKey: SerializationKeys.iso6391) as? String
     self.voteCount = aDecoder.decodeObject(forKey: SerializationKeys.voteCount) as? Int
     self.filePath = aDecoder.decodeObject(forKey: SerializationKeys.filePath) as? String
   }
@@ -83,7 +78,6 @@ public final class Posters: NSCoding {
     aCoder.encode(voteAverage, forKey: SerializationKeys.voteAverage)
     aCoder.encode(aspectRatio, forKey: SerializationKeys.aspectRatio)
     aCoder.encode(width, forKey: SerializationKeys.width)
-    aCoder.encode(iso6391, forKey: SerializationKeys.iso6391)
     aCoder.encode(voteCount, forKey: SerializationKeys.voteCount)
     aCoder.encode(filePath, forKey: SerializationKeys.filePath)
   }

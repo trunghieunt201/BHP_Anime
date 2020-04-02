@@ -36,8 +36,8 @@ class SimpleCell: UITableViewCell {
             self.img.image = UIImage(named: "test")
         }
 
-        self.titleAnime.text = item.title
-        self.time.text = item.releaseDate
+        self.titleAnime.text = item.name
+        self.time.text = item.firstAirDate
         self.lblEpisiode.text = "Vote: " +  String(item.voteAverage ?? 0)
         
     }
