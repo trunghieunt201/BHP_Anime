@@ -82,4 +82,26 @@ struct AnimeAPIManager {
             }
         }
     }
+    func getEpisodeItems(id: String, seasons: String,success :  @escaping ([EpisodeItems]) -> Void,failed :  @escaping (String) -> Void) {
+        provider.request(.getEpisode(id: id, seasons: seasons)) { (result) in
+            switch result{
+            case .success(let value):
+                do {
+                    var listEpisode : [EpisodeItems] = []
+                    let json = try JSON.init(data: value.data)
+                    
+                    let results = json["episodes"].arrayValue
+                    for result in results{
+                        let episode = EpisodeItems.init(json: result)
+                        listEpisode.append(episode)
+                    }
+                    success(listEpisode)
+                } catch(let error) {
+                    failed(error.localizedDescription)
+                }
+            case .failure(let error):
+                failed(error.localizedDescription)
+            }
+        }
+    }
 }

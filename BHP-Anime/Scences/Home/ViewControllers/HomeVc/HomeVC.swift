@@ -33,7 +33,8 @@ class HomeVC: UIViewController {
     }
     
     func configUI() {
-        self.title = "Anime"
+//        self.title = "Anime"
+        self.navigationController?.navigationBar.topItem?.title = "Anime"
         showAskRateApp()
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "ic_search"), style: .plain, target: self, action: #selector(searchButton))
         self.navigationController?.navigationBar.tintColor = UIColor.init("#0C0E41")
