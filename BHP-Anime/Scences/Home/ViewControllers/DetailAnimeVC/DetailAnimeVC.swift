@@ -141,8 +141,7 @@ class DetailAnimeVC: UIViewController {
         self.collectionViewCrew.dataSource = self
         self.collectionViewCrew.delegate = self
         self.collectionViewCrew.registerCell(ProfileCell.className)
-        // ẩn Crew
-        self.viewCrew.isHidden = true
+
         
         /// tạm thời thay tác giả cho Cast
         if self.item?.images?.backdrops?.count == 0{
@@ -151,7 +150,7 @@ class DetailAnimeVC: UIViewController {
         if self.item?.createdBy?.count == 0{
              self.viewCast.isHidden = true
         }
-        if self.item?.credits?.crew?.count == 0{
+        if self.item?.seasons?.count == 0{
              self.viewCrew.isHidden = true
         }
     }
@@ -204,7 +203,7 @@ class DetailAnimeVC: UIViewController {
     @IBAction func actionAddList(_ sender: Any) {
         if self.item?.videos?.results?.count != 0{
             StorageFavorite.sharedInstance.loadFavorites(success: { (listFavorite) in
-                let item = ObFavorite.init(id: String(self.item?.id ?? 0), key: self.item?.videos?.results?[0].key ?? "", posterPath: self.item?.posterPath ?? "")
+                let item = ObFavorite.init(id: String(self.item?.id ?? 0),  posterPath: self.item?.posterPath ?? "")
                 var listFavorites = listFavorite
                 let results = listFavorites.filter { $0.id == String(self.item?.id ?? 0)}
                 if results.isEmpty == false{
@@ -225,7 +224,7 @@ class DetailAnimeVC: UIViewController {
                 }
             }) {
                 var listFavorite :[ObFavorite]  = []
-                let item = ObFavorite.init(id: String(self.item?.id ?? 0), key: self.item?.videos?.results?[0].key ?? "", posterPath: self.item?.posterPath ?? "")
+                let item = ObFavorite.init(id: String(self.item?.id ?? 0), posterPath: self.item?.posterPath ?? "")
                 listFavorite.append(item)
                 StorageFavorite.sharedInstance.saveFavorites(listFavorites: listFavorite)
             }
@@ -268,7 +267,7 @@ extension DetailAnimeVC: UICollectionViewDataSource{
             /// tạm thời thay tác giả cho Cast
             return self.item?.createdBy?.count ?? 0
         }else {
-            return self.item?.credits?.crew?.count ?? 0
+            return self.item?.seasons?.count ?? 0
         }
         
     }
@@ -289,18 +288,18 @@ extension DetailAnimeVC: UICollectionViewDataSource{
             }else{
                 cell.img.image = UIImage(named: "account")
             }
-            cell.name.text = self.item?.credits?.cast?[indexPath.row].name
+            cell.name.text = self.item?.createdBy?[indexPath.row].name
             return cell
         }else{
             let cell = collectionViewCrew.dequeueReusableCell(withReuseIdentifier: ProfileCell.className, for: indexPath) as! ProfileCell
-            if let strUrl =  self.item?.credits?.crew?[indexPath.row].profilePath{
+            if let strUrl =  self.item?.seasons?[indexPath.row].posterPath{
                 let url = URL(string: "https://image.tmdb.org/t/p/w500/" + strUrl)
                 cell.img.kf.setImage(with: url)
             }else{
                 cell.img.image = UIImage(named: "account")
             }
             
-            cell.name.text = self.item?.credits?.crew?[indexPath.row].name
+            cell.name.text = self.item?.seasons?[indexPath.row].name
             return cell
         }
         
@@ -321,4 +320,19 @@ extension DetailAnimeVC: UICollectionViewDelegateFlowLayout{
         }
         
     }
+}
+
+extension DetailAnimeVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.collectionViewCrew{
+            let vc = EspisodeVC.loadFromNib()
+            vc.id = String(item?.id ?? 60572)
+            vc.season = String(item?.seasons?[indexPath.row].seasonNumber ?? 0)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
+    
 }
